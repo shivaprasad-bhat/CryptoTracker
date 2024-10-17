@@ -23,9 +23,11 @@ import com.svbneelmane.cryptotracker.crypto.presentation.coin_list.components.pr
 import com.svbneelmane.cryptotracker.crypto.presentation.models.toCoinUi
 import com.svbneelmane.cryptotracker.ui.theme.CryptoTrackerTheme
 
+
+const val tag: String = "CoinListScreen.kt::composable"
+
 @Composable
 fun CoinListScreen(modifier: Modifier = Modifier, state: CoinListState) {
-    val TAG: String = "CoinListScreen::composable"
     if (state.isLoading) {
         Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
@@ -37,7 +39,7 @@ fun CoinListScreen(modifier: Modifier = Modifier, state: CoinListState) {
             items(state.coins) { coinui ->
                 CoinListItem(
                     coinUi = coinui, onClick = {
-                        Log.d(TAG, "CoinListScreen: onCLick of Item")
+                        Log.d(tag, "CoinListScreen: onCLick of Item")
                     }, modifier = Modifier.fillMaxWidth()
                 )
                 HorizontalDivider()
