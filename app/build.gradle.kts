@@ -56,18 +56,17 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.bundles.compose)
-    debugImplementation(libs.bundles.compose.debug)
-
     coreLibraryDesugaring(libs.desugar.jdk.libs)
 
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.bundles.compose)
     implementation(libs.bundles.koin)
-
     implementation(libs.bundles.ktor)
+    implementation(libs.timber)
+
+    debugImplementation(libs.bundles.compose.debug)
 
     testImplementation(libs.junit)
 
