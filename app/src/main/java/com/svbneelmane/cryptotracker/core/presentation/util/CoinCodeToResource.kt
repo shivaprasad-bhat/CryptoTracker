@@ -1,4 +1,4 @@
-package com.svbneelmane.cryptotracker.util
+package com.svbneelmane.cryptotracker.core.presentation.util
 
 import com.svbneelmane.cryptotracker.R
 

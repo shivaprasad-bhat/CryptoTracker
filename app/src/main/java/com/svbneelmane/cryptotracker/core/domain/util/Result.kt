@@ -1,4 +1,4 @@
-package com.svbneelmane.cryptotracker.util
+package com.svbneelmane.cryptotracker.core.domain.util
 
 typealias DomainError = Error
 

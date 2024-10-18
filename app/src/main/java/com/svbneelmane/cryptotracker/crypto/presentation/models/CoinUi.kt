@@ -1,8 +1,8 @@
 package com.svbneelmane.cryptotracker.crypto.presentation.models
 
 import androidx.annotation.DrawableRes
+import com.svbneelmane.cryptotracker.core.presentation.util.getDrawableIdForCoin
 import com.svbneelmane.cryptotracker.crypto.domain.Coin
-import com.svbneelmane.cryptotracker.util.getDrawableIdForCoin
 import java.text.NumberFormat
 import java.util.Locale
 
