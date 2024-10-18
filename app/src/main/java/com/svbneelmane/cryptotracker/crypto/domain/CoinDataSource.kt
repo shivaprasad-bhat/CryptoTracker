@@ -2,7 +2,13 @@ package com.svbneelmane.cryptotracker.crypto.domain
 
 import com.svbneelmane.cryptotracker.core.domain.util.NetworkError
 import com.svbneelmane.cryptotracker.core.domain.util.Result
+import java.time.ZonedDateTime
 
-fun interface CoinDataSource {
+interface CoinDataSource {
     suspend fun getCoins(): Result<List<Coin>, NetworkError>
+    suspend fun getCoinHistory(
+        coinId: String,
+        start: ZonedDateTime,
+        end: ZonedDateTime
+    ): Result<List<CoinPrice>, NetworkError>
 }
