@@ -1,6 +1,5 @@
 package com.svbneelmane.cryptotracker.crypto.presentation.coin_list
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,12 +21,16 @@ import com.svbneelmane.cryptotracker.crypto.presentation.coin_list.components.Co
 import com.svbneelmane.cryptotracker.crypto.presentation.coin_list.components.previewCoin
 import com.svbneelmane.cryptotracker.crypto.presentation.models.toCoinUi
 import com.svbneelmane.cryptotracker.ui.theme.CryptoTrackerTheme
+import timber.log.Timber
 
 
 const val tag: String = "CoinListScreen.kt::composable"
 
 @Composable
-fun CoinListScreen(modifier: Modifier = Modifier, state: CoinListState) {
+fun CoinListScreen(
+    modifier: Modifier = Modifier,
+    state: CoinListState
+) {
     if (state.isLoading) {
         Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             CircularProgressIndicator()
@@ -39,7 +42,7 @@ fun CoinListScreen(modifier: Modifier = Modifier, state: CoinListState) {
             items(state.coins) { coinui ->
                 CoinListItem(
                     coinUi = coinui, onClick = {
-                        Log.d(tag, "CoinListScreen: onCLick of Item")
+                        Timber.d("CoinListScreen: onCLick of Item")
                     }, modifier = Modifier.fillMaxWidth()
                 )
                 HorizontalDivider()
@@ -55,8 +58,11 @@ fun CoinListScreen(modifier: Modifier = Modifier, state: CoinListState) {
 @Composable
 fun PreviewCoinListScreen() {
     CryptoTrackerTheme {
-        CoinListScreen(state = CoinListState(coins = (0..100).map {
-            previewCoin.toCoinUi().copy(id = it.toString())
-        }), modifier = Modifier.background(MaterialTheme.colorScheme.background))
+        CoinListScreen(
+            state = CoinListState(coins = (0..100).map {
+                previewCoin.toCoinUi().copy(id = it.toString())
+            }),
+            modifier = Modifier.background(MaterialTheme.colorScheme.background)
+        )
     }
 }
