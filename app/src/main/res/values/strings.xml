@@ -6,4 +6,7 @@
     <string name="server_error">Error from server. Please try again\n</string>
     <string name="serialization_error">Serialisation error</string>
     <string name="unknown_error">Unknown error</string>
+    <string name="market_cap">Market Cap</string>
+    <string name="price">Price</string>
+    <string name="change_last_24_hours">Change Last 24 Hr</string>
 </resources>

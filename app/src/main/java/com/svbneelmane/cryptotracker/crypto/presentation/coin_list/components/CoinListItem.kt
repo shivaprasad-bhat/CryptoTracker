@@ -101,5 +101,5 @@ internal val previewCoin = Coin(
     symbol = "BTC",
     marketCapUsd = 121312241.75,
     priceUsd = 625531.15,
-    changePercent24Hr = 0.1
+    changePercent24Hr = -0.1
 )

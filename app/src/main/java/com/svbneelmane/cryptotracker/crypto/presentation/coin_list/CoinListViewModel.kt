@@ -20,7 +20,7 @@ class CoinListViewModel(
     private val coinDataSource: CoinDataSource
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(CoinListState())
+    private val _state = MutableStateFlow(CoinState())
     val state = _state
         .onStart {
             loadCoins()
@@ -28,7 +28,7 @@ class CoinListViewModel(
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(5000L),
-            CoinListState()
+            CoinState()
         )
 
 
@@ -38,7 +38,9 @@ class CoinListViewModel(
     fun onAction(action: CoinListAction) {
         when (action) {
             is CoinListAction.OnCoinClick -> {
-                Timber.d("Individual coin clicked")
+                _state.update {
+                    it.copy(selectedCoin = action.coinUi)
+                }
             }
         }
     }

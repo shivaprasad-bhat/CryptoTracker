@@ -29,7 +29,8 @@ const val tag: String = "CoinListScreen.kt::composable"
 @Composable
 fun CoinListScreen(
     modifier: Modifier = Modifier,
-    state: CoinListState
+    state: CoinState,
+    onAction: (CoinListAction) -> Unit
 ) {
     if (state.isLoading) {
         Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -39,11 +40,14 @@ fun CoinListScreen(
         LazyColumn(
             modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(state.coins) { coinui ->
+            items(state.coins) { coin ->
                 CoinListItem(
-                    coinUi = coinui, onClick = {
+                    coinUi = coin,
+                    onClick = {
                         Timber.d("CoinListScreen: onCLick of Item")
-                    }, modifier = Modifier.fillMaxWidth()
+                        onAction(CoinListAction.OnCoinClick(coinUi = coin))
+                    },
+                    modifier = Modifier.fillMaxWidth()
                 )
                 HorizontalDivider()
             }
@@ -59,10 +63,11 @@ fun CoinListScreen(
 fun PreviewCoinListScreen() {
     CryptoTrackerTheme {
         CoinListScreen(
-            state = CoinListState(coins = (0..100).map {
+            state = CoinState(coins = (0..100).map {
                 previewCoin.toCoinUi().copy(id = it.toString())
             }),
-            modifier = Modifier.background(MaterialTheme.colorScheme.background)
+            modifier = Modifier.background(MaterialTheme.colorScheme.background),
+            onAction = {}
         )
     }
 }

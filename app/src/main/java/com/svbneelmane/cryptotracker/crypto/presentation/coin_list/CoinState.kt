@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 import com.svbneelmane.cryptotracker.crypto.presentation.models.CoinUi
 
 @Immutable
-data class CoinListState(
+data class CoinState(
     val isLoading: Boolean = false,
     val coins: List<CoinUi> = emptyList(),
     val selectedCoin: CoinUi? = null
